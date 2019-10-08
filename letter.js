@@ -6,11 +6,11 @@
     // Function that returns the character if guessed, or placeholder if not guessed
     // Function that takes a char at an argument and checks it against the underlying char, updating the boolean
 
-function Letter(value, guessed) {
-    this.value = value
-    this.guessed = guessed
+function Letter(value) {
+    this.value = value;
+    guessed = false;
 
-    this.display = function() {
+    this.letterDisplay = function() {
         var placeholder = "_"
 
         if (this.guessed === true) {
@@ -19,8 +19,12 @@ function Letter(value, guessed) {
             return placeholder;
         }
     }
+
+    this.makeGuess = function(newGuess) {
+        if (this.value === newGuess) {
+            this.guessed = true;
+        }
+    }
 }
 
-var a = new Letter("a", true);
-
-console.log(a.display());
+module.exports = Letter;
