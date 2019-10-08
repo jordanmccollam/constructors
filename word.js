@@ -8,25 +8,31 @@ var Letter = require("./letter");
 
 function Word(chosenWord) {
     this.chosenWord = chosenWord;
-    chosenWordArr = [];
+    this.chosenWordArr = [];
 
     chosenWord.split("").forEach(element => {
-        chosenWordArr.push(new Letter(element));
+        this.chosenWordArr.push(new Letter(element));
     });
 
     this.wordDisplay = function() {
-        for (var i = 0; i < chosenWordArr.length; i++) {
-            console.log(chosenWordArr[i].letterDisplay());
+        var wordForDisplay = [];
+
+        for (var i = 0; i < this.chosenWordArr.length; i++) {
+            var letterStatus = this.chosenWordArr[i].letterDisplay();
+            wordForDisplay.push(letterStatus);
         }
+        // console.log(wordForDisplay.join(" "));
+        return wordForDisplay.join(" ");
     }
 
-    this.sendGuess = function(newGuess) {
-        for (var i = 0; i < chosenWordArr.length; i++) {
-            chosenWordArr[i].makeGuess(newGuess);
+    this.makeGuess = function(newGuess) {
+        for (var i = 0; i < this.chosenWordArr.length; i++) {
+            this.chosenWordArr[i].makeGuess(newGuess);
         }
     }
 }
 
+// var test = new Word("Hello");
+// console.log(test.wordDisplay().indexOf("_"));
+
 module.exports = Word;
-
-
