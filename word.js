@@ -16,7 +16,7 @@ function Word(chosenWord) {
 
     this.wordDisplay = function() {
         for (var i = 0; i < chosenWordArr.length; i++) {
-            return (chosenWordArr[i].letterDisplay());
+            console.log(chosenWordArr[i].letterDisplay());
         }
     }
 
